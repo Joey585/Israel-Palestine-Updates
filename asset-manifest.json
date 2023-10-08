@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Israel-Palestine-Updates/static/css/main.a83f000a.css",
-    "main.js": "/Israel-Palestine-Updates/static/js/main.f7c49dbb.js",
+    "main.js": "/Israel-Palestine-Updates/static/js/main.015a62de.js",
     "static/js/787.96e15f9c.chunk.js": "/Israel-Palestine-Updates/static/js/787.96e15f9c.chunk.js",
     "index.html": "/Israel-Palestine-Updates/index.html",
     "main.a83f000a.css.map": "/Israel-Palestine-Updates/static/css/main.a83f000a.css.map",
-    "main.f7c49dbb.js.map": "/Israel-Palestine-Updates/static/js/main.f7c49dbb.js.map",
+    "main.015a62de.js.map": "/Israel-Palestine-Updates/static/js/main.015a62de.js.map",
     "787.96e15f9c.chunk.js.map": "/Israel-Palestine-Updates/static/js/787.96e15f9c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a83f000a.css",
-    "static/js/main.f7c49dbb.js"
+    "static/js/main.015a62de.js"
   ]
 }
