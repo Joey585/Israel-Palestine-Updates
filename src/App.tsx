@@ -1,13 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './App.css';
-import remarkGfm from "remark-gfm";
-import { format } from 'date-fns';
 import {Content} from "./components/content";
-
-
 import useWebSocket, {ReadyState} from "react-use-websocket";
-import ReactMarkdown from 'react-markdown';
-import {log} from "util";
 
 export const WebSocketAPI = () => {
     const [socketURL] = useState('wss://socket.voidedsky.net:9585/');
@@ -87,7 +81,7 @@ export const WebSocketAPI = () => {
                     //         }
                     //     </div>
                     // </div>
-                    <Content announcement={message.content} images={message.attachments} author={message.author} timestamp={message.timestamp} idx={idx} id={message.id}/>
+                    <Content announcement={message.content} images={message.attachments} author={message.author} timestamp={message.date} idx={idx} id={message.id}/>
                 ))}
             </div>
         </div>

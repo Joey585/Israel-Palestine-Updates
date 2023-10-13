@@ -45,8 +45,14 @@ export const Content = (props: {announcement: string, images: Array<string>, aut
         )
     }
 
-    function handleClick(){
-        componentRef.current.style.display = "block"
+    function handleClick(e: React.MouseEvent<HTMLParagraphElement>,props: {announcement: string, images: Array<string>, author: string, timestamp: number, idx: number, id: string}){
+        const children = document.getElementById("announcement-container")!.children;
+        for(const child of children){
+            const result = child.querySelector(".moreContent")
+            if(result){
+                result.id !== props.id.concat("-content") ? result.className = "hide moreContent" : result.className = "shown moreContent"
+            }
+        }
     }
 
 
@@ -55,12 +61,12 @@ export const Content = (props: {announcement: string, images: Array<string>, aut
         <div className="announcement bg-green-50 border-8 border-amber-50" key={props.idx} id={props.id}>
             <div className="header">
                 <h3 className="author">{props.author}:</h3>
-                <span className="timestamp">{format(0, "MM/dd HH:mm")}</span>
+                <span className="timestamp">{format(props.timestamp, "MM/dd HH:mm")}</span>
             </div>
-            <div onClick={handleClick}>
-                <ReactMarkdown>{allContent!.header ? allContent!.header : "No Header"}</ReactMarkdown>
+            <div onClick={(e) => handleClick(e, props)} className="headline">
+                <ReactMarkdown>{allContent!.header ? allContent!.header : "No Headline"}</ReactMarkdown>
             </div>
-            <div id={props.id + "-content"} ref={componentRef} style={{display: "none"}}>
+            <div id={props.id.concat("-content")} ref={componentRef} className="moreContent hidden">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{allContent!.content ? allContent!.content : "No more message"}</ReactMarkdown>
             </div>
             {/*<div className="images">*/}

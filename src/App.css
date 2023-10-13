@@ -73,3 +73,9 @@ body {
 .shown {
   display: block;
 }
+
+.headline {
+  cursor: pointer;
+  font-size: larger;
+  font-weight: bold;
+}
