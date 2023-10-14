@@ -14,13 +14,30 @@ body {
   color: red;
 }
 
+::-webkit-scrollbar {
+  width:14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d3748;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: #4a5568;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a202c;
+}
+
 .announcement{
   text-align: left;
 }
 #announcement-container {
+  gap: 10px;
   border: steelblue 1px solid;
   width: 100%;
-  max-height: 85vh;
+  max-height: 90%;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -28,15 +45,17 @@ body {
 }
 
 .header {
-  position: relative;
+  align-content: center;
   display: flex;
-  max-height: 4vh;
+  gap: 10px;
+}
+
+.timestamp, .author {
+  margin: 0;
+  display: inline-block;
 }
 
 .timestamp {
-  position: absolute;
-  top: 50%; /* Move the element down by half of the parent's height */
-  transform: translateY(10%) translateX(110%);
   color: dimgray;
 }
 
@@ -45,4 +64,18 @@ body {
   max-width: 500px;
   border-radius: 2%;
   margin-top: 5px;
+}
+
+.hide {
+  display: none;
+}
+
+.shown {
+  display: block;
+}
+
+.headline {
+  cursor: pointer;
+  font-size: larger;
+  font-weight: bold;
 }

@@ -1,14 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
 import './App.css';
-import remarkGfm from "remark-gfm";
-import { format } from 'date-fns';
-
-
+import {Content} from "./components/content";
 import useWebSocket, {ReadyState} from "react-use-websocket";
-import ReactMarkdown from 'react-markdown';
 
 export const WebSocketAPI = () => {
-    const [socketURL] = useState('ws://localhost:5000');
+    const [socketURL] = useState('wss://socket.voidedsky.net:9585/');
     const [messageHistory, setMessageHistory] = useState<any[]>([]);
 
     const { lastMessage, readyState } = useWebSocket(socketURL);
@@ -16,9 +12,12 @@ export const WebSocketAPI = () => {
     const announcementContainerRef = useRef(null);
 
     useEffect(() => {
+        document.title = 'Updates';
+    }, []);
+
+    useEffect(() => {
         if (lastMessage !== null) {
             const lastMessageData = JSON.parse(lastMessage.data);
-            console.log(lastMessageData)
             switch (lastMessageData.op){
                 case 4:
                     setMessageHistory((prev) => prev.concat({content: lastMessageData.d.content, author: lastMessageData.d.author, date: lastMessageData.d.date, attachments: lastMessageData.d.attachments, id: lastMessageData.d.id}))
@@ -60,30 +59,32 @@ export const WebSocketAPI = () => {
 
 
     return (
-        <div>
-            <h1>Israeli - Palestinian updates</h1>
-            <p className="status">{connectionStatus}</p>
+        <div className="bg-[#121212]">
+            <div className="fixed bg-black w-full">
+                <h1 className="text-green-700 top-3 relative text-center text-4xl">Israeli - Palestinian updates</h1>
+                <p className="text-red-800 text-5xl top-2 relative inline-block">•</p><p className="text-red-800 text-left font-bold text-2xl inline-block">{connectionStatus}</p>
+            </div>
             <div id="announcement-container" ref={announcementContainerRef}>
                 {messageHistory.map((message, idx) => (
-                    <div className="announcement" key={idx} id={message.id}>
-                        <div className="header">
-                            <h3>{message.author}:</h3>
-                            <span className="timestamp">{format(message.date, "MM/dd HH:mm")}</span>
-                        </div>
-
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
-                        <div className="images">
-                            {
-                                message.attachments.map((image: string, idm: number) => (
-                                    <img src={image} alt="" className="image" key={idm}/>
-                                ))
-                            }
-                        </div>
-                    </div>
+                    // <div className="announcement bg-green-50 border-8 border-amber-50" key={idx} id={message.id}>
+                    //     <div className="header">
+                    //         <h3 className="author">{message.author}:</h3>
+                    //         <span className="timestamp">{format(message.date, "MM/dd HH:mm")}</span>
+                    //     </div>
+                    //
+                    //     <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
+                    //     <div className="images">
+                    //         {
+                    //             message.attachments.map((image: string, idm: number) => (
+                    //                 <img src={image} alt="" className="image" key={idm}/>
+                    //             ))
+                    //         }
+                    //     </div>
+                    // </div>
+                    <Content announcement={message.content} images={message.attachments} author={message.author} timestamp={message.date} idx={idx} id={message.id}/>
                 ))}
             </div>
         </div>
-
     );
 }
 
