@@ -18,6 +18,14 @@ export const Callback  = () => {
     }, [searchParams]);
 
     useEffect(() => {
+        /*
+        token format =
+        id . nonce . date.now
+        encoded in base 64 for each section
+        nonce = random letter and number 6 long
+
+         */
+
         if(code !== null){
             core.get(`/verify?accessToken=${code}`).then((data) => {
                 if(data.data.code === 200){
