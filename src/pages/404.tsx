@@ -1,5 +1,6 @@
 import {useSearchParams} from "react-router-dom";
 import {useEffect, useState} from "react";
+import "../css/404.css"
 
 export const Error404 = () => {
     const [searchParams] = useSearchParams();
@@ -10,10 +11,10 @@ export const Error404 = () => {
     }, [searchParams]);
 
     return(
-        <div>
+        <div id="404-container">
             <h2>Whoops! 404 Error!</h2>
             <h4>Couldn't find the selected resource</h4>
-            <p>Error: {errorCode ? errorCode : "Not Defined"}</p>
+            <p id="extra-data">Error: {errorCode ? errorCode : "Not Defined"}</p>
         </div>
     )
 }

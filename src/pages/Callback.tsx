@@ -29,9 +29,10 @@ export const Callback  = () => {
         if(code !== null){
             core.get(`/verify?accessToken=${code}`).then((data) => {
                 if(data.data.code !== 200) return;
-                localStorage.setItem("token", data.data.token);
+                localStorage.setItem("token", data.data.d.token);
+                localStorage.setItem("id", data.data.d.id);
                 console.log(data.data)
-                // window.location.replace("/user/" + data.data.id);
+                window.location.replace("/user/" + data.data.d.id);
             });
         }
     }, [code]);
