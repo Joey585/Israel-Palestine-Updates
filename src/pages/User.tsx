@@ -4,7 +4,7 @@ import core from "../api/core";
 import {getToken} from "../utils/auth";
 import "../css/user.css";
 import {format} from "date-fns";
-import {isEditable} from "@testing-library/user-event/dist/utils";
+import {Editor} from "../components/Editor";
 
 export const User = () => {
     const { id } = useParams();
@@ -23,12 +23,6 @@ export const User = () => {
         });
     }, [id]);
 
-    function Editor(isEditable: boolean){
-        if(!isEditable) return null;
-
-        
-    }
-
     if(loading){
         return (
             <div className="loading-container">
@@ -40,6 +34,7 @@ export const User = () => {
     return(
 
         <div>
+            <Editor isEditable={userData.isEditable}></Editor>
             <div id="header">
                 <img src={userData.avatarURL} className="avatar" alt="avatar"/>
                 <p id="username"><span className="symbol">@</span>{userData.username}</p>

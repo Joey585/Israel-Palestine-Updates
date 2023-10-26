@@ -40,3 +40,53 @@
     margin-left: 15px;
 }
 
+#editor-container {
+    width: 100vh;
+    height: 100%;
+}
+
+#editing-container {
+    display: none;
+    position: absolute;
+    border: #2d3748 1px solid;
+    border-radius: 10px;
+    background-color: white;
+    left: 30%;
+    bottom: 50%;
+    height: 30%;
+    width: 20%;
+    flex-direction: column;
+    padding: 5px;
+}
+
+#editing-container button {
+    border: #5865F2 2px solid;
+}
+
+#editing-container button:hover {
+    background-color: #4a5568;
+}
+
+
+#editing-container h2 {
+    font-size: x-large;
+    text-align: center;
+}
+
+#editing-container input, label {
+    padding: 5px;
+}
+
+#editing-container input {
+    border: #1a202c 1px solid;
+    margin-left: 10px;
+}
+
+#edit-logo {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 60%;
+}
+
+
