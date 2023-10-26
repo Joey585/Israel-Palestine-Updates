@@ -1,4 +1,6 @@
 import React, {createRef} from "react";
+import core from "../api/core";
+import {getToken} from "../utils/auth";
 
 export const Editor = (props: {isEditable: boolean | any}) => {
     if(!props.isEditable) return null;
@@ -6,6 +8,7 @@ export const Editor = (props: {isEditable: boolean | any}) => {
 
     function onPencilClick(e: React.MouseEvent<HTMLDivElement>){
         container.current!.style.display = "flex";
+        document.body.style.backgroundColor = "grey";
     }
 
     function handleButton(e: React.MouseEvent<HTMLButtonElement>){
@@ -18,7 +21,14 @@ export const Editor = (props: {isEditable: boolean | any}) => {
             }
         }
 
-        console.log(newData);
+        core.post("/edit-user", {id: localStorage.getItem("id"), d: newData}, {headers: {Authorization: getToken()}}).then((r) => {
+            if(r.data === 200){
+                window.location.reload();
+            }
+        }).catch((reason) => {
+            console.log(reason)
+            // window.location.replace("/login");
+        });
     }
 
     return (
@@ -28,10 +38,10 @@ export const Editor = (props: {isEditable: boolean | any}) => {
             </div>
             <div id="editing-container" ref={container}>
                 <h2>Edit Information</h2>
-                <label htmlFor="username" id="username">Username</label>
+                <label htmlFor="username">Username</label>
                 <input id="username"/>
-                <label htmlFor="about-me" id="aboutMe">About Me</label>
-                <input id="about-me"/>
+                <label htmlFor="aboutMe">About Me</label>
+                <input id="aboutMe"/>
                 <br></br>
                 <button type="submit" onClick={handleButton}>Edit</button>
             </div>
