@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap');
+
 .loading-container {
     text-align: center;
 }
@@ -16,28 +18,38 @@
     100% { transform: rotate(360deg); }
 }
 
-#header {
+#user-data {
     display: flex;
     margin: 15px;
     gap: 20px;
+    flex-wrap: wrap;
+    width: 50%;
 }
 
 #username {
     padding-top: 64px;
+    margin-left: 15%;
+    color: #FFF;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
 }
 
 .symbol {
-    font-size: x-large;
-    color: #4a5568;
-    padding-right: 10px;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #757575;
+    padding-right: 20px;
 }
 
-.avatar {
-    border-radius: 30%;
-}
-
-#body {
-    margin-left: 15px;
+#avatar {
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
 #editor-container {
@@ -51,10 +63,11 @@
     border: #2d3748 1px solid;
     border-radius: 10px;
     background-color: white;
-    left: 30%;
-    bottom: 50%;
-    height: 30%;
-    width: 20%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 400px;
     flex-direction: column;
     padding: 5px;
 }
@@ -85,8 +98,182 @@
 #edit-logo {
     width: 30px;
     height: 30px;
-    position: absolute;
-    right: 60%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 10px;
 }
+
+body {
+    background-color: #161616;
+}
+
+#navbar-list {
+    display: flex;
+    gap: 50px;
+}
+
+
+.nav-link {
+    margin-top: 15px;
+    padding-left: 20px;
+    color: #FFF;
+    height: 46px;
+    flex-shrink: 0;
+    font-family: Inter, serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#join-date {
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: 263px;
+    color: #FFF;
+    text-align: center;
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 50;
+    line-height: normal;
+}
+
+#separator-nav{
+    flex: 2;
+    flex-direction: column;
+    width: 87%;
+    margin-top: 5px;
+    height: 1px;
+    background-color: black;
+}
+
+#stats {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: 10%;
+}
+
+#followers {
+    margin-top: 18px;
+    display: flex;
+    gap: 10%;
+    margin-left: 11%;
+}
+
+.follower-number {
+    color: #FFF;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.follow-label {
+    color: #FFF;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+#about-me {
+    flex-basis: 100%;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: normal;
+    margin-left: 15px;
+}
+
+#RecFollowContainer {
+    margin-top: 30px;
+    width: 30%;
+    background-color: #363636;
+    border-radius: 15px;
+    padding: 12px;
+}
+
+#user-header{
+    display: flex;
+}
+
+.recommended-user {
+    display: flex;
+}
+
+.recommended-user-data {
+    display: flex;
+}
+
+.recommended-user-avatar {
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+    margin-bottom: auto;
+}
+
+.recommended-username {
+    color: #FFF;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 5px;
+}
+
+.recommended-user-symbol {
+    color: #757575;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-right: 5px;
+}
+
+.recommended-user-aboutMe {
+    color: #A8A8A8;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    margin-left: 5px;
+    text-overflow: ellipsis;
+}
+
+.recommended-user-follow {
+    background-color: #3A37C9;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.recommended-user-ignore {
+    background-color: #515152;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.recommended-user-buttons {
+    height: 30px;
+    margin-left: 5%;
+    display: flex;
+    gap: 10%;
+    margin-top: 20px;
+    color: #FFF;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+@media (max-width: 1600px) {
+    .recommended-user-buttons{
+        flex-wrap: wrap;
+    }
+}
+
+
 
 

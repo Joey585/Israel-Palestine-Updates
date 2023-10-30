@@ -3,10 +3,9 @@ import {useParams} from "react-router-dom";
 import core from "../api/core";
 import {getToken} from "../utils/auth";
 import "../css/user.css";
-import {format} from "date-fns";
-import {Editor} from "../components/Editor";
+import {User} from "../components/user/User";
 
-export const User = () => {
+export const UserPage = () => {
     const { id } = useParams();
     const [userData, setUserData] = useState<any>(null);
     const [loading, setLoading] = useState<boolean>(true);
@@ -32,17 +31,15 @@ export const User = () => {
     }
 
     return(
-
-        <div>
-            <Editor isEditable={userData.isEditable}></Editor>
-            <div id="header">
-                <img src={userData.avatarURL} className="avatar" alt="avatar"/>
-                <p id="username"><span className="symbol">@</span>{userData.username}</p>
-            </div>
-            <div id="body">
-                <p id="about-me">{userData.aboutMe}</p>
-                <p>Joined {format(userData.dateJoined, "MMM d, yyyy")}</p>
-            </div>
-        </div>
+        <User
+            username={userData.username}
+            avatarURL={userData.avatarURL}
+            followers={userData.stats.followers}
+            following={userData.stats.following}
+            aboutMe={userData.aboutMe}
+            isEditable={userData.isEditable}
+            dateJoined={userData.dateJoined}
+            recUsers={[{username: "joey586", aboutMe: "I am the sauce master", id: "82124730", avatarURL: "https://cdn.discordapp.com/avatars/811477909985558608/fde77e8ef0617e1bf6a6d8239585e68b.webp?size=160"}]}
+            blogs={[]}></User>
     )
 }

@@ -4,7 +4,8 @@ import App from "./App";
 import {Login} from "./pages/Login";
 import {Callback} from "./pages/Callback";
 import {Error404} from "./pages/404";
-import {User} from "./pages/User";
+import {UserPage} from "./pages/UserPage";
+import {CreateBlog} from "./pages/CreateBlog";
 
 export const Pages = () => {
     return(
@@ -15,7 +16,8 @@ export const Pages = () => {
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/callback" element={<Callback></Callback>}/>
                 <Route path="/404" element={<Error404/>}/>
-                <Route path="/user/:id" element={<User></User>}></Route>
+                <Route path="/user/:id" element={<UserPage></UserPage>}></Route>
+                <Route path="/create/blog" element={<CreateBlog></CreateBlog>}></Route>
             </Routes>
         </Router>
     )

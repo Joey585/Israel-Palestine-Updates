@@ -7,8 +7,16 @@ export const Editor = (props: {isEditable: boolean | any}) => {
     const container = createRef<HTMLDivElement>();
 
     function onPencilClick(e: React.MouseEvent<HTMLDivElement>){
+        if(container.current?.style.display === "flex"){
+            container.current!.style.display = "none";
+            document.body.style.backgroundColor = "white";
+            document.getElementById("avatar")!.style.filter = "brightness(100%)";
+            return;
+        }
+
         container.current!.style.display = "flex";
         document.body.style.backgroundColor = "grey";
+        document.getElementById("avatar")!.style.filter = "brightness(50%)";
     }
 
     function handleButton(e: React.MouseEvent<HTMLButtonElement>){
